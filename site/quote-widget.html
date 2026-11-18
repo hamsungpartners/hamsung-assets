@@ -1,0 +1,100 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* 견적 접수(/quote) · 아임웹 코드 위젯 v1.0(261118) · 통합제안서 '이 견적으로 접수하기' → 이 페이지(#q = 견적 요약) → 아래 아임웹 입력폼으로 접수 */
+html,body{background:#F5F5F3!important}
+.section_wrap:has(#hsQuote),.section_wrap:has(.hsq-form){background:#F5F5F3!important}
+#hsQuote{--ink:#15181D;--ink2:#4A515C;--ink3:#7C8490;--line:#E3E5E8;--bg:#FFFFFF;--tint:#F5F5F3;--red:#C30A10;--red-ink:#A30810;--sale:#E0121C;
+  font:400 16px/1.7 'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;color:var(--ink);word-break:keep-all;text-align:left;max-width:560px;margin:0 auto;padding:36px 0 8px}
+#hsQuote *{box-sizing:border-box}
+#hsQuote a{text-decoration:none}
+#hsQuote .q-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+#hsQuote .q-brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;color:var(--ink)}
+#hsQuote .q-brand svg{width:20px;height:24px}
+#hsQuote .q-home{font-size:14px;color:var(--ink2)}
+#hsQuote .q-card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:28px 26px}
+#hsQuote h1{margin:0;font-size:26px;line-height:1.35;font-weight:600;letter-spacing:-.025em;color:var(--ink)}
+#hsQuote .sub{margin:8px 0 0;color:var(--ink2);font-size:15px}
+#hsQuote .q-sum{margin:22px 0 0;border-top:1px solid var(--ink);padding:0;list-style:none}
+#hsQuote .q-sum li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+#hsQuote .q-sum li span{color:var(--ink2)}
+#hsQuote .q-sum li b{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+#hsQuote .q-sum li.h{padding-top:16px;border-bottom:0;font-size:13px;font-weight:600;color:var(--ink3)}
+#hsQuote .q-sum li.disc b{color:var(--sale)}
+#hsQuote .q-sum li.tot{border-bottom:0;padding-top:16px}
+#hsQuote .q-sum li.tot span{color:var(--ink);font-weight:600}
+#hsQuote .q-sum li.tot b{font-size:22px;color:var(--sale)}
+#hsQuote .q-note{margin:10px 0 0;font-size:13px;color:var(--ink3)}
+#hsQuote .q-edit{display:inline-block;margin-top:14px;font-size:14px;font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--line)}
+#hsQuote .q-empty p{margin:10px 0 0;color:var(--ink2);font-size:15px}
+#hsQuote .q-go{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 20px;margin-top:18px;border-radius:8px;background:var(--red);color:#FFFFFF;font-weight:600}
+#hsQuote .q-step{margin:28px 0 0;font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+#hsQuote .q-step small{display:block;font-size:14px;font-weight:400;color:var(--ink2);margin-top:4px}
+#hsQuote [hidden]{display:none!important}
+/* 아래 아임웹 입력폼을 같은 모양으로 */
+.hsq-form{max-width:560px;margin:0 auto 64px!important;background:#FFFFFF;border:1px solid #E3E5E8;border-radius:12px;padding:8px 26px 26px!important;font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif!important}
+.hsq-form input[type=text],.hsq-form input[type=tel],.hsq-form input[type=email],.hsq-form textarea{border:1.5px solid #E3E5E8!important;border-radius:8px!important;font-size:16px!important;box-shadow:none!important}
+.hsq-form input[type=text],.hsq-form input[type=tel],.hsq-form input[type=email]{height:50px!important}
+.hsq-form textarea{min-height:180px!important;line-height:1.6!important;padding:12px 14px!important}
+.hsq-form input[type=text],.hsq-form input[type=tel]{padding:0 14px!important}
+.hsq-form input:focus,.hsq-form textarea:focus{border-color:#15181D!important;outline:0!important}
+.hsq-form input,.hsq-form textarea,.hsq-form select{color:#15181D!important;background:#FFFFFF!important;-webkit-text-fill-color:#15181D}
+.hsq-form label,.hsq-form .control-label,.hsq-form .form-group>label,.hsq-form .title{color:#15181D!important;font-weight:600!important;font-size:14px!important}
+.hsq-form .privacy,.hsq-form .privacy *{color:#4A515C!important;font-size:13px!important;line-height:1.7!important}
+.hsq-form .privacy .form-control,.hsq-form .privacy textarea,.hsq-form .privacy [class*=scroll],.hsq-form .privacy div[style*=height]{max-height:132px!important;height:auto!important;border:1px solid #E3E5E8!important;border-radius:8px!important;background:#F5F5F3!important;padding:10px 12px!important;overflow:auto!important}
+.hsq-form .privacy strong{color:#15181D!important}
+.hsq-form ._input_form_submit{display:flex!important;align-items:center!important;justify-content:center!important;margin-top:8px!important}
+.hsq-form .checkbox label,.hsq-form .checkbox span{color:#15181D!important;font-size:14px!important}
+.hsq-form ._input_form_submit,.hsq-form button[type=submit],.hsq-form .btn_submit,.hsq-form ._submit_btn,.hsq-form [class*=submit] a,.hsq-form [class*=submit] button{background:#C30A10!important;border-color:#C30A10!important;color:#FFFFFF!important;border-radius:8px!important;min-height:54px!important;font-size:17px!important;font-weight:600!important;width:100%!important}
+@media (max-width:640px){#hsQuote{padding:24px 20px 8px}#hsQuote .q-card{padding:24px 20px}.hsq-form{margin:0 20px 48px!important;padding:4px 20px 22px!important}}
+</style>
+<div id="hsQuote">
+  <div class="q-top"><a class="q-brand" href="/"><svg aria-hidden="true"><use href="#hsqLogo"/></svg>함성파트너스</a><a class="q-home" href="/">홈페이지</a></div>
+  <section class="q-card" id="hsqHas" hidden>
+    <h1>이 견적으로 접수할까요?</h1>
+    <p class="sub">통합제안서에서 고르신 구성이 그대로 넘어왔어요.</p>
+    <ul class="q-sum" id="hsqSum"></ul>
+    <p class="q-note">공급가 기준이며 부가세는 별도입니다. 최종 금액은 상담에서 정합니다.</p>
+    <a class="q-edit" id="hsqEdit" href="https://hamsungpartners.github.io/hamsung-assets/proposal/#flow">구성 바꾸러 가기</a>
+  </section>
+  <section class="q-card q-empty" id="hsqNone">
+    <h1>문의 남기기</h1>
+    <p>운영 중인 블로그나 인스타그램 주소를 함께 적어 주시면 상담이 빨라집니다. 금액부터 보고 싶으시면 통합제안서에서 업종과 채널을 골라 보세요. 견적이 바로 계산되고, 그 견적 그대로 이 화면에서 접수하실 수 있습니다.</p>
+    <a class="q-go" href="https://hamsungpartners.github.io/hamsung-assets/proposal/#flow">통합제안서에서 견적 내보기</a>
+  </section>
+  <p class="q-step" id="hsqStep">연락받으실 곳을 알려 주세요<small id="hsqStepSub">확인하는 대로 담당자가 연락드려요.</small></p>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="hsqLogo" viewBox="90 8 222 270"><path d="M244.248 122.786C246.843 114.116 246.3 109.704 246.417 100.749C246.74 75.8795 243.43 57.11 259.37 35.7598C268.175 24.1953 280.78 16.1112 294.963 12.9331C299.923 11.8569 304.225 11.7444 309.143 11.0245C308.913 14.8244 309.033 19.6212 309.03 23.4821L309.028 45.3532C309.033 66.527 309.08 87.746 308.995 108.921C308.98 112.981 308.535 117.74 308.395 121.911C308.2 122.334 308 122.753 307.795 123.169C307.618 123.6 307.078 124.925 306.998 125.376C304.938 136.844 300.33 147.779 294.4 157.753C280.513 180.599 258.215 197.084 232.301 203.665C207.238 210.009 179.352 206.401 157.09 193.133C154.415 202.876 154.925 216.488 154.935 226.646L154.935 252.655C154.939 257.68 155.048 262.7 154.906 267.722C154.83 270.442 154.103 272.485 151.116 272.96C147.802 273.487 144.27 273.272 140.906 273.26L124.704 273.212L108.181 273.233C104.333 273.25 93.208 274.645 92.5548 269.555C92.2463 267.15 92.288 263.672 92.296 261.177L92.3308 248.628C92.3355 234.997 92.2623 221.332 92.3655 207.701C92.4008 203.059 93.8493 199.298 93.082 194.613C94.7845 191.318 95.8515 184.883 97.0835 180.947C100.145 171.168 104.391 162.355 110.132 153.872C124.885 131.916 147.717 116.678 173.653 111.479C194.195 107.56 211.557 108.805 231.275 116.377C234.948 117.787 240.994 120.574 244.248 122.786ZM164.975 174.294C169.689 174.943 174.139 175.451 178.93 175.227C200.901 173.934 218.515 165.101 232.038 147.885C233.689 145.782 235.316 143.235 237.033 141.28C232.87 141.132 227.664 140.703 223.604 140.859C220.027 141.017 216.117 141.204 212.6 141.815C197.737 144.509 184.146 151.94 173.857 162.998C170.281 166.904 168.142 170.346 164.975 174.294Z" fill="#C30A10"/><path d="M92.2377 11.1734C93.7005 11.319 95.3552 11.5285 96.8127 11.6004C126.623 13.0695 152.081 37.6035 154.461 67.3688C154.922 73.1348 154.922 78.153 154.92 83.9518C154.874 92.3085 154.902 100.666 155.003 109.022C153.545 109.502 149.426 111.628 147.873 112.413C132.796 120.036 118.366 132.764 109.373 147.12C102.306 157.134 97.384 170.397 94.637 182.281C93.7127 186.279 94.4072 188.955 92.4912 192.971C92.571 187.499 92.3792 181.155 92.3362 175.627L92.2767 147.08L92.2377 11.1734Z" fill="#BF0715"/><path d="M307.795 123.17C308 122.753 308.2 122.334 308.395 121.911C309.345 125.752 309.012 135.805 309.017 140.236L309.033 170.592L309.035 234.931C309.038 246.035 309.048 257.132 309.015 268.24C308.998 273.732 304.57 273.392 300.255 273.392C294.21 273.395 288.168 273.287 282.12 273.3L262.845 273.318C258.91 273.32 252.11 273.915 248.498 272.237C247.532 271.79 246.818 270.22 246.654 269.185C246.318 264.347 246.473 258.987 246.482 254.14L246.513 218.962C246.46 203.45 244.581 208.783 257.283 201.581C281.265 187.982 299.468 164.462 305.935 137.585C306.735 134.303 308.728 126.388 307.795 123.17Z" fill="#BF0715"/></symbol></svg>
+<script>
+(function(){
+  var raw='';
+  try{var m=location.hash.match(/[#&]q=([A-Za-z0-9_-]+)/);if(m){var b=m[1].replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';raw=decodeURIComponent(escape(atob(b)))}}catch(e){raw=''}
+  raw=raw.slice(0,4000);
+  var $=function(id){return document.getElementById(id)};
+  var esc=function(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  if(raw){
+    var rows=[],lines=raw.split('\n');
+    lines.forEach(function(l){l=l.trim();if(!l)return;
+      if(/^\[함성파트너스/.test(l))return;
+      if(/^\[(.+)\]$/.test(l)){rows.push('<li class="h">'+esc(l.slice(1,-1))+'</li>');return}
+      if(/^플랜 코드:/.test(l)){var code=l.split(':')[1].trim();if(code)$('hsqEdit').href='https://hamsungpartners.github.io/hamsung-assets/proposal/#'+encodeURIComponent(code);return}
+      var mm=l.match(/^(업종|목표|최종 결제|공급가[^:]*|정가[^:]*|웰컴 기프트[^:]*|\d+개월 약정 할인[^:]*):\s*(.+)$/);
+      if(/^최종 결제/.test(l)){var v=l.replace(/^최종 결제\s*/,'');rows.push('<li class="tot"><span>최종 결제</span><b>'+esc(v)+'</b></li>');return}
+      if(mm){rows.push('<li'+(/할인|기프트/.test(mm[1])?' class="disc"':'')+'><span>'+esc(mm[1])+'</span><b>'+esc(mm[2])+'</b></li>');return}
+      var p=l.match(/^(.*?)\s([\d,]+원.*|견적 협의)$/);
+      if(p){rows.push('<li><span>'+esc(p[1])+'</span><b>'+esc(p[2])+'</b></li>');return}
+      rows.push('<li><span>'+esc(l)+'</span><b></b></li>')});
+    $('hsqSum').innerHTML=rows.join('');$('hsqHas').hidden=false;$('hsqNone').hidden=true;$('hsqStepSub').textContent='확인하는 대로 이 견적을 바탕으로 연락드려요.'}
+  /* 아래 아임웹 입력폼: 위젯 묶음에 모양 클래스 · 긴 글 칸에 견적을 미리 넣음 */
+  function fill(n){
+    var forms=[].slice.call(document.querySelectorAll('form')).filter(function(f){return f.querySelector('textarea')&&!f.closest('#hsQuote')});
+    if(!forms.length){if(n<40)setTimeout(function(){fill(n+1)},250);return}
+    var f=forms[0],box=f.closest('[doz_type="widget"]')||f.parentElement;box.classList.add('hsq-form');
+    var ta=f.querySelectorAll('textarea');ta=ta[ta.length-1];
+    if(raw&&ta){var g=ta.closest('.form-group'),lb=g&&g.querySelector('label');if(lb&&lb.firstChild&&lb.firstChild.nodeType===3)lb.firstChild.nodeValue='견적 내용과 남기실 말 '}
+    if(raw&&ta&&!ta.value){ta.value=raw+'\n\n(남기실 말이 있으면 아래에 적어 주세요)\n';ta.dispatchEvent(new Event('input',{bubbles:true}));ta.dispatchEvent(new Event('change',{bubbles:true}))}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){fill(0)});else fill(0);
+})();
+</script>
