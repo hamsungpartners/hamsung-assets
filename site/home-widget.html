@@ -1,6 +1,7 @@
 <style>
 /* 아임웹 코드 위젯 안에서 쓰는 보정(261118) */
 html,body{background:#FFFFFF!important}
+[hidden]{display:none!important}
 .section_wrap:has(#hsHome){padding:0!important;margin:0!important;background:#FFFFFF!important}
 .section_wrap:has(#hsHome) .inside,.section_wrap:has(#hsHome) .doz_row,.section_wrap:has(#hsHome) .col-dz,.section_wrap:has(#hsHome) ._widget_data,.section_wrap:has(#hsHome) [doz_type="widget"]{padding:0!important;margin:0!important;width:100%!important;max-width:none!important}
 #hsHome .brand svg{width:24px;height:29px}
@@ -8,6 +9,7 @@ html,body{background:#FFFFFF!important}
 #hsHome .hp-link,#hsHome .hp-btn.ghost{color:#15181D}
 #hsHome .hp-link:hover{color:#C30A10}
 #hsHome .faq-go{color:#C30A10}
+.rm a.rm-go,.rm a.rm-go:hover,.rm a.rm-go:visited{color:#FFFFFF}
 #hsHome{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;color:#15181D;text-align:left;line-height:1.75;font-size:17px}
 #hsHome h1,#hsHome h2,#hsHome h3,#hsHome h4,#hsHome p,#hsHome ul,#hsHome ol,#hsHome dl,#hsHome dd,#hsHome figure{margin-top:0}
 #hsHome a{text-decoration:none}
@@ -621,20 +623,23 @@ html.dk .opt.deal[aria-pressed="true"]{background:linear-gradient(180deg,#3A3112
 @media (max-width:720px){.fgrid{grid-template-columns:1fr}}
 /* reference modal */
 .rm{position:fixed;inset:0;z-index:90;background:rgba(10,14,20,.55);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));backdrop-filter:blur(4px)}
-.rm-box{width:min(760px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--bg);border-radius:24px;padding:20px;display:grid;gap:12px;animation:flin .35s ease}
-.rm-top{display:flex;align-items:center;gap:10px}
+.rm[hidden]{display:none!important}
+.rm{cursor:pointer}
+.rm-box{width:min(760px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--bg);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:12px;animation:flin .35s ease;cursor:auto;overscroll-behavior:contain}
+.rm-top{display:flex;align-items:center;gap:10px;position:sticky;top:-20px;z-index:3;background:var(--bg);margin:-20px -20px 0;padding:20px 20px 0}
 .rm-tabs{display:flex;gap:6px;flex-wrap:wrap;flex:1}
 .rm-tabs button{border:0;background:var(--bg-3);color:var(--ink-2);border-radius:14px;padding:7px 13px;font:600 14px var(--sans);cursor:pointer;display:grid;text-align:left;line-height:1.25}
 .rm-tabs button small{font-size:11.5px;font-weight:500;opacity:.75}
 .rm-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.rm-x{border:0;background:var(--bg-3);width:36px;height:36px;border-radius:50%;cursor:pointer;color:var(--ink)}
+.rm-x{border:0;background:var(--bg-3);width:40px;height:40px;flex:0 0 40px;border-radius:50%;cursor:pointer;color:var(--ink)}
 .rm-d{font-size:14.5px;color:var(--ink-2)}.rm-d b{color:var(--ink)}
-.rm-frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.rm-frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
 .rm-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#EEF0F3}
 .rm-bar i{width:9px;height:9px;border-radius:50%;background:#C9CED6}
 .rm-bar span{margin-left:10px;font-size:11.5px;color:#7A828E;background:#fff;border-radius:6px;padding:2px 10px}
-.rm-page{height:min(58vh,500px);overflow:auto;color:#191F28;font-family:var(--sans);container-type:inline-size;background:#fff;scroll-behavior:smooth}
+.rm-page{height:min(58vh,500px);min-height:170px;flex:0 1 auto;overflow:auto;overscroll-behavior:contain;color:#191F28;font-family:var(--sans);container-type:inline-size;background:#fff;scroll-behavior:smooth}
 .rm-note{font-size:12.5px;color:var(--ink-3)}
+.rm .rm-go,.rm .rm-go:hover,.rm .rm-go:focus,.rm .rm-go:visited{color:#FFFFFF;flex:0 0 auto}
 /* ===== v6 website mockups (sample brands) ===== */
 .mx{--mk:#191F28;--mk2:#4E5968;--mk3:#8B95A1;--ml:#E5E8EB;--mt:#F7F8FA;--ma:#C30A10;font-size:13px;line-height:1.55;color:var(--mk);background:#fff}
 .mx img{display:block;width:100%;height:100%;object-fit:cover;max-width:100%}
@@ -902,7 +907,8 @@ body{background:var(--hp-paper);color:var(--hp-ink);font-family:var(--hp-f)}
 .hp-cta{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:6px;background:var(--hp-ink);color:#FFFFFF;font-size:14px;font-weight:600;text-decoration:none;margin-left:8px;white-space:nowrap}
 .hp-cta:hover{background:#000000}
 .hp-menu{display:none;margin-left:auto;width:44px;height:44px;border:0;background:transparent;border-radius:8px}
-.hp-menu span{display:block;width:20px;height:2px;background:var(--hp-ink);margin:5px auto}
+.hp-menu span{display:block;width:20px;height:2px;background:var(--hp-ink);margin:5px auto;transition:transform .2s ease,opacity .2s ease}
+.hp-menu.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hp-menu.x span:nth-child(2){opacity:0}.hp-menu.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .hp-drawer{position:fixed;inset:72px 0 auto 0;background:#FFFFFF;border-bottom:1px solid var(--hp-line);padding:8px max(24px,env(safe-area-inset-left,0px)) 24px;display:none;z-index:49}
 .hp-drawer a{display:block;padding:14px 0;border-bottom:1px solid var(--hp-line);font-size:17px;font-weight:600;color:var(--hp-ink);text-decoration:none}
 .hp-drawer a:last-child{border:0}
@@ -1060,6 +1066,8 @@ body{background:var(--hp-paper);color:var(--hp-ink);font-family:var(--hp-f)}
 @media (prefers-reduced-motion: reduce){.hp-rv{opacity:1;transform:none}.hp-scroll i{animation:none}}
 @media (max-width:1080px){
   .bar nav{display:none}.hp-cta{display:none}.hp-menu{display:block}
+  .hp-link,.hp-svc-row .hp-more,.faq-go,.hp-ft .lk a,.hp-tap{position:relative}
+  .hp-link::after,.hp-svc-row .hp-more::after,.faq-go::after,.hp-ft .lk a::after,.hp-tap::after{content:"";position:absolute;inset:-10px -6px}
   .hp-head,.hp-about .hp-grid,.hp-price .hp-grid,.hp-contact .hp-grid,.hp-two{grid-template-columns:1fr}
   .hp-two{gap:40px}
   .hp-svc-row{grid-template-columns:1fr}.hp-svc-row .hp-more{justify-self:start}
@@ -1187,7 +1195,7 @@ body{background:var(--hp-paper);color:var(--hp-ink);font-family:var(--hp-f)}
       <div class="hp-svc-row"><h3>콘텐츠 채널 운영<small>네이버 블로그, 인스타그램, 스레드, 유튜브</small></h3><div><p>월간 계획에 따라 원고와 이미지를 제작하고 발행합니다. 고객이 실제로 검색하는 질문을 주제로 삼아, 검색 결과와 AI 답변에 함께 쓰이는 정보형 콘텐츠를 만듭니다.</p><div class="hp-chips"><span>월간 콘텐츠 계획서</span><span>원고와 이미지 제작</span><span>발행 관리</span></div></div><a class="hp-more" href="https://hamsungpartners.github.io/hamsung-assets/proposal/#price">견적 내보기</a></div>
       <div class="hp-svc-row"><h3>지역 채널 관리<small>네이버 플레이스, 당근 비즈프로필</small></h3><div><p>지도 검색과 동네 탐색에서 가장 먼저 보이는 영업 정보와 사진, 소식을 관리합니다. 매달 새 소식을 올려 정보가 멈춰 있지 않게 합니다.</p><div class="hp-chips"><span>정보 정비</span><span>월 소식 발행</span><span>사진 관리</span></div></div><a class="hp-more" href="https://hamsungpartners.github.io/hamsung-assets/proposal/#price">견적 내보기</a></div>
       <div class="hp-svc-row"><h3>채널 최적화와 광고<small>채널 세팅, 네이버 비즈광고, 스마트스토어</small></h3><div><p>프로필과 상품 정보를 검색 기준에 맞게 다시 작성하고, 비즈광고는 예산 안에서 운용하고 결과를 함께 보고합니다.</p><div class="hp-chips"><span>프로필 재작성</span><span>세팅 기록서</span><span>광고 운용</span></div></div><a class="hp-more" href="https://hamsungpartners.github.io/hamsung-assets/proposal/#price">견적 내보기</a></div>
-      <div class="hp-svc-row"><h3>디지털빌드업<small>홈페이지, 랜딩페이지, 상세페이지</small></h3><div><p>문의와 구매로 이어지는 페이지를 기획하고 제작합니다. 공개한 뒤에도 내용 수정과 관리를 이어 갑니다.</p><div class="hp-chips"><span>기획</span><span>제작</span><span>유지 관리</span></div><p style="margin-top:14px;font-size:14.5px"><a href="#build-examples" style="color:var(--hp-red);font-weight:600;text-decoration:none">구성 예시 보기</a></p></div><a class="hp-more" href="https://hamsungpartners.github.io/hamsung-assets/proposal/#price">견적 내보기</a></div>
+      <div class="hp-svc-row"><h3>디지털빌드업<small>홈페이지, 랜딩페이지, 상세페이지</small></h3><div><p>문의와 구매로 이어지는 페이지를 기획하고 제작합니다. 공개한 뒤에도 내용 수정과 관리를 이어 갑니다.</p><div class="hp-chips"><span>기획</span><span>제작</span><span>유지 관리</span></div><p style="margin-top:14px;font-size:14.5px"><a class="hp-tap" href="#build-examples" style="color:var(--hp-red);font-weight:600;text-decoration:none">구성 예시 보기</a></p></div><a class="hp-more" href="https://hamsungpartners.github.io/hamsung-assets/proposal/#price">견적 내보기</a></div>
     </div>
     <p class="hp-svc-foot">모든 운영 서비스에는 월간 성과 보고서가 포함됩니다.</p>
     <div class="hp-refs" id="build-examples">
@@ -1325,7 +1333,8 @@ const IND={
  edu:{n:'학원, 교육',d:'커리큘럼과 상담',r:'cbocb-o',s:{blog:8,meta:'both',danggn:1}},
  consult:{n:'교육 컨설팅, 기관',d:'설립 절차와 실적',r:'cob---c',run:1,s:{blog:8,meta:'th'}},
  local:{n:'동네 생활 서비스',d:'상권과 단골',r:'bb-cc--',s:{blog:4,meta:'ig',danggn:1,place:1}},
- b2b:{n:'B2B 전문 서비스',d:'사례와 전문성',r:'cob---c',s:{blog:12,meta:'th'}}};
+ b2b:{n:'B2B 전문 서비스',d:'사례와 전문성',r:'cob---c',s:{blog:12,meta:'th'}},
+ etc:{n:'기타 업종',d:'목록에 없는 업종, 상담에서 맞춰요',r:'cbbooo-',s:{blog:8,meta:'both'}}};
 const RN={c:'핵심',b:'함께',o:'선택','-':'나중에'};
 function role(ind,ch){const i=CH.findIndex(c=>c.k===ch);return IND[ind]?IND[ind].r[i]:''}
 /* ---------- opening: pixel mosaic in Google-like colors → Hamsung burgundy ---------- */
@@ -1702,8 +1711,8 @@ const REFS={
  S:{n:'포트폴리오형',ex:'함성인테리어',url:'함성인테리어.com/portfolio',d:'사례를 분류해 보여주고, 사례마다 상세 페이지가 있는 사이트',html:INT},
  P:{n:'브랜드형',ex:'함성플라워',url:'함성플라워.com',d:'브랜드 분위기와 움직임을 맞춤으로 연출하는 사이트',html:FLO}};
 function refModal(){
-  let m=$('#refModal'),cur='L';
-  const close=()=>{m.hidden=true;document.documentElement.style.overflow=''};
+  let m=$('#refModal'),cur='L',back=null;
+  const close=()=>{m.hidden=true;document.documentElement.style.overflow='';if(back&&back.focus){try{back.focus({preventScroll:true})}catch(e){}}back=null};
   if(!m){m=document.createElement('div');m.id='refModal';m.className='rm';m.hidden=true;
     m.innerHTML='<div class="rm-box" role="dialog" aria-modal="true" aria-label="홈페이지 구성 예시"><div class="rm-top"><div class="rm-tabs">'+Object.entries(REFS).map(([k,v])=>'<button type="button" data-r="'+k+'"><b>'+v.n+'</b><small>'+v.ex+'</small></button>').join('')+'</div><button class="rm-x" type="button" aria-label="닫기"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></button></div><p class="rm-d"></p><div class="rm-frame"><div class="rm-bar"><i></i><i></i><i></i><span class="rm-url"></span></div><div class="rm-page"></div></div><p class="rm-note">가상의 브랜드 \'함성○○\'로 만든 예시 화면입니다. 실제 결과물은 대표님 업종과 내용에 맞춰 설계해요.<br>사진 Unsplash 무료 라이선스, 아이콘 Lucide(오픈소스)</p><a class="btn btn-pri rm-go" href="https://pf.kakao.com/_QnyMX/chat" target="_blank" rel="noopener">이 유형으로 견적 상담받기</a></div>';
     document.body.appendChild(m);
@@ -1724,7 +1733,7 @@ function refModal(){
     m.querySelector('.rm-d').innerHTML='<b>'+R.ex+' 예시</b><br>'+R.d;m.querySelector('.rm-url').textContent=R.url;
     m.querySelector('.rm-go').textContent=R.n+(k==='L'?'로':'으로')+' 견적 상담받기';
     const pg=m.querySelector('.rm-page');pg.innerHTML=R.html();pg.scrollTop=0;if(k==='B')pg.querySelectorAll('.mx-nl[data-mxp="main"],.mx-pgchips [data-mxp="main"]').forEach(h=>h.classList.add('on'));reveal()}
-  return k=>{show(k);m.hidden=false;document.documentElement.style.overflow='hidden'}
+  return k=>{back=document.activeElement;show(k);m.hidden=false;document.documentElement.style.overflow='hidden';const x=m.querySelector('.rm-x');if(x){try{x.focus({preventScroll:true})}catch(e){}}}
 }
 let openRef=null;
 function bindRefs(){document.addEventListener('click',e=>{const b=e.target.closest('[data-ref]');if(!b)return;e.preventDefault();e.stopPropagation();if(!openRef)openRef=refModal();openRef(b.dataset.ref)},true);
@@ -1801,7 +1810,7 @@ function flow(cfg){
   function view(st){const ind=IND[S.ind]||{},g=GOALS[S.goal]||{};
     switch(st){
     case 'ind':return '<h3 class="fl-q"><span>어떤 업종을</span><span>운영하고 계세요?</span></h3><p class="fl-sub">업종에 맞춰, 필요한 채널부터 골라 드릴게요.</p><div class="fl-opts two">'+Object.entries(IND).map(([k,v])=>opt('ind',k,v.n,v.d,'')).join('')+'</div>';
-    case 'goal':return '<h3 class="fl-q"><span>'+ind.n+' 대표님,</span><span>가장 먼저 바라는 건 무엇인가요?</span></h3><p class="fl-sub">한 가지만 골라 주세요.<br>그에 맞춰 채널 비중을 조정해 드려요.</p><div class="fl-opts">'+Object.entries(GOALS).map(([k,v])=>opt('goal',k,v.n,v.d)).join('')+'</div>';
+    case 'goal':return '<h3 class="fl-q"><span>'+(S.ind==='etc'?'':ind.n+' ')+'대표님,</span><span>가장 먼저 바라는 건 무엇인가요?</span></h3><p class="fl-sub">한 가지만 골라 주세요.<br>그에 맞춰 채널 비중을 조정해 드려요.</p><div class="fl-opts">'+Object.entries(GOALS).map(([k,v])=>opt('goal',k,v.n,v.d)).join('')+'</div>';
     case 'rec':{const R=REC||S,n=counts(R);let rows='';
       if(R.blog)rows+=rr('네이버 블로그','월 '+R.blog+'편(주 '+R.blog/4+'회)',P?M(P.BLOG[R.blog]):'월 '+R.blog+'편');
       if(R.meta!=='off')rows+=rr({both:'META 인스타그램 + 스레드',ig:'META 인스타그램',th:'META 스레드'}[R.meta],{both:'인스타 월 8건, 스레드 월 16건',ig:'월 8건(10초 릴스 1건 포함)',th:'월 16건'}[R.meta],P?M(P.META[R.meta]):(n.ig?'인스타 '+n.ig+'건':'')+(n.ig&&n.th?', ':'')+(n.th?'스레드 '+n.th+'건':''));
@@ -1809,7 +1818,7 @@ function flow(cfg){
       if(R.place)rows+=rr('네이버 플레이스','소식 월 4건, 사진과 정보 관리',P?M(P.PL):'월 4건');
       rows+=rr('월간 성과 리포트','지난달 숫자와 다음 달 계획','포함',1)+rr('채널 최적화 세팅','켠 채널 '+chans(R)+'개','첫 계약 무상',1);
       const HN=[...hints(S.ind,S.goal)].map(k=>k==='detail'?'상세페이지':ADDS.find(a=>a.k===k).n.replace(/ 1(건|편)/,''));
-      return '<h3 class="fl-q"><span>'+ind.n+'에는</span><span>이렇게 시작하길 권해요.</span></h3><p class="fl-sub">\''+g.n+'\'에 맞춰 골랐어요.<br>'+(P?'이대로 가셔도 되고, 하나씩 정하셔도 돼요.':'한 달에 <b>'+total(R)+'건</b>의 콘텐츠가 나가요.')+'</p><div class="rec-list">'+rows+'</div>'+(HN.length?'<p class="rec-hint">뒤에서 더할 수 있어요: '+HN.join(', ')+'</p>':'')+'<div class="rec-acts"><button class="btn btn-pri" type="button" data-go="'+(P?'term':'res')+'" data-all="1">'+(P?'이대로 견적 보기':'이대로 플랜 보기')+'</button><button class="btn btn-sub" type="button" data-go="blog">하나씩 정하기</button></div>'}
+      return '<h3 class="fl-q"><span>'+(S.ind==='etc'?'대표님께는':ind.n+'에는')+'</span><span>이렇게 시작하길 권해요.</span></h3><p class="fl-sub">\''+g.n+'\'에 맞춰 골랐어요.<br>'+(P?'이대로 가셔도 되고, 하나씩 정하셔도 돼요.':'한 달에 <b>'+total(R)+'건</b>의 콘텐츠가 나가요.')+'</p><div class="rec-list">'+rows+'</div>'+(HN.length?'<p class="rec-hint">뒤에서 더할 수 있어요: '+HN.join(', ')+'</p>':'')+'<div class="rec-acts"><button class="btn btn-pri" type="button" data-go="'+(P?'term':'res')+'" data-all="1">'+(P?'이대로 견적 보기':'이대로 플랜 보기')+'</button><button class="btn btn-sub" type="button" data-go="blog">하나씩 정하기</button></div>'}
     case 'blog':return '<h3 class="fl-q"><span>네이버 블로그는</span><span>한 달에 몇 편 올릴까요?</span></h3><p class="fl-sub">AI 브리핑과 검색이 가장 많이 인용하는 채널이에요.</p>'+roleChip('blog')+'<div class="fl-opts">'+opt('blog',4,'월 4편','주 1회',pm(P&&P.BLOG[4]))+opt('blog',8,'월 8편','주 2회',pm(P&&P.BLOG[8]))+opt('blog',12,'월 12편','주 3회, 편당 가장 저렴해요',pm(P&&P.BLOG[12]))+opt('blog',0,'하지 않을게요','',P?'0원':'')+'</div>';
     case 'meta':return '<h3 class="fl-q"><span>META 채널은</span><span>어떻게 운영할까요?</span></h3><p class="fl-sub">인스타그램과 스레드는 같은 META 계정으로 이어져요.<br>인스타 월 8건(10초 릴스 1건 포함), 스레드 월 16건 기준이에요. 하나만 골라도 돼요.</p>'+roleChip('ig')+'<div class="fl-opts">'+opt('meta','both','인스타그램 + 스레드','둘 다 하면 묶음 가격',pm(P&&P.META.both))+opt('meta','ig','인스타그램만','피드, 카드, 릴스',pm(P&&P.META.ig))+opt('meta','th','스레드만','짧은 글 위주',pm(P&&P.META.th))+opt('meta','off','하지 않을게요','',P?'0원':'')+'</div>';
     case 'danggn':return '<h3 class="fl-q"><span>동네 손님에게 닿는</span><span>당근 비즈프로필도 할까요?</span></h3><p class="fl-sub">소식 월 4건에 쿠폰과 단골 관리까지 맡아요.<br>비즈광고는 실비로 따로예요.</p>'+roleChip('dg')+'<div class="fl-opts">'+opt('danggn',1,'할게요','월 4건',pm(P&&P.DG))+opt('danggn',0,'괜찮아요','',P?'0원':'')+'</div>';
@@ -1956,8 +1965,12 @@ HS.casesMulti();HS.bindCopy();HS.bindRefs();document.querySelectorAll('img[data-
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const bar=document.getElementById('hpBar'),menu=document.getElementById('hpMenu'),dr=document.getElementById('hpDrawer');
 addEventListener('scroll',()=>bar.classList.toggle('on',scrollY>8),{passive:true});
-menu.addEventListener('click',()=>{const o=dr.classList.toggle('open');menu.setAttribute('aria-expanded',o)});
-dr.addEventListener('click',e=>{if(e.target.closest('a')){dr.classList.remove('open');menu.setAttribute('aria-expanded',false)}});
+function setMenu(o){dr.classList.toggle('open',o);menu.setAttribute('aria-expanded',o);menu.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');menu.classList.toggle('x',o)}
+menu.addEventListener('click',()=>setMenu(!dr.classList.contains('open')));
+dr.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
+document.addEventListener('click',e=>{if(dr.classList.contains('open')&&!dr.contains(e.target)&&!menu.contains(e.target))setMenu(false)});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&dr.classList.contains('open')){setMenu(false);menu.focus()}});
+addEventListener('resize',()=>{if(innerWidth>1080&&dr.classList.contains('open'))setMenu(false)},{passive:true});
 /* 어두운 띠 영상: 화면에 들어올 때만 재생 */
 const nv=document.getElementById('hpNight');
 if(nv&&!reduce)new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){nv.play().catch(()=>{})}else nv.pause()}),{threshold:.2}).observe(nv);
