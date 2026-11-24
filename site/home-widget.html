@@ -1060,6 +1060,9 @@ body{background:var(--hp-paper);color:var(--hp-ink);font-family:var(--hp-f)}
 .hp-ft p{margin:0}
 .hp-ft .lk{display:flex;flex-wrap:wrap;gap:6px 20px;align-content:start}
 .hp-ft .lk a{color:#FFFFFF;text-decoration:none;font-weight:600}
+.hp-ft .lk-col{display:grid;gap:12px;align-content:start}
+.hp-ft .lk.sns a{font-weight:500;color:var(--hp-night2)}
+.hp-ft .lk.sns a:hover{color:#FFFFFF}
 .hp-ft .cp{grid-column:1/-1;color:#7C8490;font-size:12.5px}
 .hp-todo{color:#FF8A8F}
 :focus-visible{outline:2px solid var(--hp-red);outline-offset:3px}
@@ -1301,7 +1304,10 @@ body{background:var(--hp-paper);color:var(--hp-ink);font-family:var(--hp-f)}
       <p>부산광역시 해운대구 반송로877번길 60, A동 2층 201호 (해운대 창조 비즈니스센터)</p>
       <p>010-8757-7058, contact@hamsung.biz</p>
     </div>
-    <div class="lk"><a href="/?mode=privacy">개인정보처리방침</a><a href="/?mode=policy">이용약관</a><a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=6536600722" target="_blank" rel="noopener">사업자정보 확인</a></div>
+    <div class="lk-col">
+      <div class="lk sns" aria-label="공식 채널"><a href="https://www.instagram.com/hamsung_partners/" target="_blank" rel="me noopener">인스타그램</a><a href="https://www.threads.com/@hamsung_partners" target="_blank" rel="me noopener">스레드</a><a href="https://blog.naver.com/hamsungpartners_" target="_blank" rel="me noopener">네이버 블로그</a><a href="https://pf.kakao.com/_QnyMX" target="_blank" rel="me noopener">카카오톡 채널</a></div>
+      <div class="lk"><a href="/?mode=privacy">개인정보처리방침</a><a href="/?mode=policy">이용약관</a><a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=6536600722" target="_blank" rel="noopener">사업자정보 확인</a></div>
+    </div>
     <p class="cp">© 2026 함성파트너스 Hamsung Partners</p>
   </div>
 </footer>
