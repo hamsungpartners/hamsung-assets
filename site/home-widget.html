@@ -933,7 +933,7 @@ function after(){if(started)return;started=true;
 }
 function finish(){H.classList.remove('noscroll');H.classList.add('ready');setTimeout(function(){H.classList.remove('pre');$$('.flyer,.search').forEach(function(e){e.remove()});var ov=$('#intro');if(ov)ov.remove();after()},reduce?0:60)}
 var timers=[];function at(ms,fn){timers.push(setTimeout(fn,ms))}
-if(reduce||seen){var ov0=$('#intro');if(ov0)ov0.remove();$$('.flyer,.search').forEach(function(e){e.remove()});H.classList.remove('pre','noscroll');H.classList.add('ready');after();}
+if(reduce||seen){var ov0=$('#intro');if(ov0)ov0.remove();$$('.flyer,.search').forEach(function(e){e.remove()});H.classList.remove('pre','noscroll');H.classList.add('ready');setTimeout(after,0);}/* 다시 방문(인트로 건너뜀) = 스크립트 뒤쪽 var 초기화(TH · drawn)가 끝난 뒤 실행 — 바로 부르면 실이 그려지지 않았음(261126) */
 else intro();
 function intro(){
   try{sessionStorage.setItem('hs_intro_'+V,'1')}catch(e){}
@@ -1030,7 +1030,7 @@ function setLen(L){if(!TH)return;TH.shown=L;TH.path.style.strokeDashoffset=TH.L-
   if(!litEls)litEls=$$('[data-lit]');var hy=q.y+TH.oy;litEls.forEach(function(el){var r=el.getBoundingClientRect(),c=r.top+scrollY+r.height*.5;if(hy>c&&!el.classList.contains('lit'))el.classList.add('lit')});
   var cta=$('#ctaBtn');if(cta)cta.classList.toggle('tied',L>=TH.L-4)}
 function drawIn(){if(!TH)return;var to=lenAt(headY()),t0=null;if(reduce){drawn=true;setLen(to);return}
-  requestAnimationFrame(function st(t){t0=t0||t;var k=Math.min(1,(t-t0)/1300);setLen(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st);else drawn=true})}
+  requestAnimationFrame(function st(t){t0=t0||t;var k=Math.min(1,(t-t0)/1300);setLen(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st);else{drawn=true;upd(true)}})}
 function timeline(){var st=$$('#tl .step');function on(){var y=innerHeight*.62;st.forEach(function(s){s.classList.toggle('cur',s.getBoundingClientRect().top<y)})}addEventListener('scroll',on,{passive:true});on()}
 /* 흩어진 큐브가 한 줄로(A, 어두운 구간) */
 function nightCubes(){var sec=$('#night'),cv=sec.querySelector('canvas.cv');if(!cv)return;var ctx=cv.getContext('2d'),dpr=Math.min(2,devicePixelRatio||1),W,Hh,cubes=[],N=22,x0,x1,ly,T0=0;
